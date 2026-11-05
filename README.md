@@ -1,4 +1,5 @@
 # Sadhusanga Setlists
+## This is a public demo version of a private app
 
 Sadhusanga Setlists is an offline-first band setlist management application built with Next.js.
 
