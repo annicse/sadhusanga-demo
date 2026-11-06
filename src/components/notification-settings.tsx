@@ -273,7 +273,7 @@ export function NotificationSettings({ user }: NotificationSettingsProps) {
                                 <Smartphone className="h-4 w-4 text-primary" />
                                 Mobile App Required
                             </span>
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] font-medium text-amber-400">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[12px] font-medium text-amber-400">
                                 Installed Mobile Only
                             </span>
                         </div>
@@ -284,12 +284,12 @@ export function NotificationSettings({ user }: NotificationSettingsProps) {
 
                         <div className="p-3 rounded-lg bg-zinc-900/60 border border-white/5 flex items-start gap-2.5">
                             <Smartphone className="h-4 w-4 text-zinc-400 mt-0.5 shrink-0" />
-                            <p className="text-[11px] text-zinc-400 leading-relaxed">
+                            <p className="text-[12px] text-zinc-400 leading-relaxed">
                                 To receive push alerts, open <strong className="text-zinc-200">sadhusanga</strong> on your phone, install the app to your Home Screen, and turn on notifications there.
                             </p>
                         </div>
 
-                        <p className="text-[11px] text-zinc-500">
+                        <p className="text-[12px] text-zinc-400">
                             You can still customize your rehearsal notification preferences below from desktop.
                         </p>
                     </div>
@@ -301,7 +301,7 @@ export function NotificationSettings({ user }: NotificationSettingsProps) {
                                 <Download className="h-4 w-4 text-amber-400" />
                                 Install App to Enable Notifications
                             </span>
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] font-medium text-amber-400">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[12px] font-medium text-amber-400">
                                 Not Installed
                             </span>
                         </div>
@@ -311,37 +311,37 @@ export function NotificationSettings({ user }: NotificationSettingsProps) {
                         </p>
 
                         <div className="p-3 rounded-lg bg-black/40 border border-white/10 space-y-2">
-                            <span className="text-[11px] font-semibold text-zinc-300 uppercase tracking-wider block">
+                            <span className="text-[12px] font-semibold text-zinc-300 uppercase tracking-wider block">
                                 How to Install:
                             </span>
 
                             {platform === 'ios' ? (
                                 <div className="space-y-2 text-xs text-zinc-300">
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">1</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">1</span>
                                         <span>Tap the <strong className="text-white">Share</strong> button <Share className="inline h-3.5 w-3.5 text-primary mx-0.5" /> in Safari&apos;s bottom toolbar.</span>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">2</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">2</span>
                                         <span>Scroll down and tap <strong className="text-white">&quot;Add to Home Screen&quot;</strong>.</span>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">3</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">3</span>
                                         <span>Open the newly installed app on your Home Screen and return to this page to enable notifications.</span>
                                     </div>
                                 </div>
                             ) : (
                                 <div className="space-y-2 text-xs text-zinc-300">
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">1</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">1</span>
                                         <span>Tap the browser menu <strong className="text-white">(⋮)</strong> in Chrome.</span>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">2</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">2</span>
                                         <span>Tap <strong className="text-white">&quot;Install App&quot;</strong> or <strong className="text-white">&quot;Add to Home screen&quot;</strong>.</span>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[10px] font-bold text-white mt-0.5">3</span>
+                                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[12px] font-bold text-white mt-0.5">3</span>
                                         <span>Launch the installed app from your Home Screen to activate rehearsal push alerts.</span>
                                     </div>
                                 </div>

@@ -363,12 +363,12 @@ export function SetlistBuilder({
                         <div className="border-b border-zinc-300 pb-2.5 mb-4">
                             <div className="flex justify-between items-baseline">
                                 <div>
-                                    <span className="text-xs font-bold text-zinc-500 mr-2 font-mono">
+                                    <span className="text-xs font-bold text-zinc-400 mr-2 font-mono">
                                         #{index + 1}
                                     </span>
                                     <h2 className="text-xl font-bold inline text-zinc-950">{item.songs.title}</h2>
                                     {item.songs.artist && (
-                                        <p className="text-xs text-zinc-600 mt-0.5">{item.songs.artist}</p>
+                                        <p className="text-xs text-zinc-400 mt-0.5">{item.songs.artist}</p>
                                     )}
                                 </div>
                                 <div className="flex gap-2 text-xs font-mono">
@@ -386,7 +386,7 @@ export function SetlistBuilder({
                             </div>
 
                             {(item.performance_note || item.songs.notes) && (
-                                <div className="mt-2 text-[11px] italic bg-zinc-50 p-2 rounded border border-zinc-200 text-zinc-800">
+                                <div className="mt-2 text-[12px] italic bg-zinc-50 p-2 rounded border border-zinc-200 text-zinc-800">
                                     {item.performance_note && (
                                         <div><strong>Setlist Note:</strong> {item.performance_note}</div>
                                     )}

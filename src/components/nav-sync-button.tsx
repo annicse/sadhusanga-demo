@@ -36,7 +36,7 @@ export function NavSyncButton() {
                     : <RefreshCw className="h-4 w-4" />
                 }
                 {pendingCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 min-w-4 h-4 px-1 rounded-full bg-amber-500 text-[10px] font-bold text-zinc-950 flex items-center justify-center">
+                    <span className="absolute -top-0.5 -right-0.5 min-w-4 h-4 px-1 rounded-full bg-amber-500 text-[12px] font-bold text-zinc-950 flex items-center justify-center">
                         {pendingCount}
                     </span>
                 )}

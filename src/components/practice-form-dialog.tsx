@@ -167,7 +167,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                                     id="practice-venue-select"
                                     value={venue}
                                     onChange={(e) => setVenue(e.target.value)}
-                                    className="w-full h-9 rounded-md border border-white/10 bg-black/60 px-3 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary"
+                                    className="w-full h-9 rounded-md border border-white/40 bg-black/60 px-3 py-1 text-sm text-white"
                                 >
                                     <option value="Demo Studio">Demo Studio (Default)</option>
                                     <option value="Community Hall">Community Hall</option>
@@ -227,7 +227,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                                     id="recurring-day"
                                     value={dayOfWeek}
                                     onChange={(e) => setDayOfWeek(e.target.value)}
-                                    className="w-full h-9 rounded-md border border-white/10 bg-black/60 px-3 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary"
+                                    className="w-full h-9 rounded-md border border-white/40 bg-black/60 px-3 py-1 text-sm text-white"
                                 >
                                     <option value="1">Monday</option>
                                     <option value="2">Tuesday</option>
@@ -276,7 +276,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                             </div>
                         </div>
 
-                        <p className="text-[11px] text-zinc-400 bg-white/5 p-2.5 rounded-lg border border-white/5">
+                        <p className="text-[12px] text-zinc-400 bg-white/5 p-2.5 rounded-lg border border-white/5">
                             This will automatically generate weekly rehearsal sessions for the selected weekday until the end of <strong>{untilMonth}</strong>.
                         </p>
 

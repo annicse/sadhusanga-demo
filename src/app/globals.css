@@ -101,7 +101,7 @@
   --secondary: rgba(255, 255, 255, 0.08);
   --secondary-foreground: #f3f4f6;
   --muted: rgba(255, 255, 255, 0.06);
-  --muted-foreground: rgba(255, 255, 255, 0.6);
+  --muted-foreground: rgba(255, 255, 255, 0.7);
   --accent: rgba(255, 255, 255, 0.08);
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
@@ -136,6 +136,9 @@
   html {
     @apply font-sans;
     scrollbar-gutter: stable;
+    /* Keep focused elements clear of the sticky header and fixed bottom nav (WCAG 2.4.11) */
+    scroll-padding-top: 4.5rem;
+    scroll-padding-bottom: 5.5rem;
   }
 
   a:hover,
@@ -255,4 +258,32 @@
 
 .profile-button {
   margin-right: 0 !important;
+}
+/* =============================================
+   Accessibility (WCAG 2.2 AA)
+   ============================================= */
+
+/* Visible keyboard focus. Declared outside any @layer so it wins over the
+   `outline-none` utilities used by the UI primitives. #e4af57 has > 9:1
+   contrast against the dark surfaces. */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Honour the OS "reduce motion" setting for all animations and transitions
+   (dialog zoom/fade, spinners, press feedback, page transitions). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .touch-active:active {
+    transform: none;
+  }
 }

@@ -254,7 +254,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                             <Clock className="h-4 w-4" />
                         </div>
                         <div>
-                            <div className="text-[11px] text-zinc-500 font-medium">Time</div>
+                            <div className="text-[12px] text-zinc-400 font-medium">Time</div>
                             <div className="font-semibold text-white">{practice.time}</div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                             <MapPin className="h-4 w-4" />
                         </div>
                         <div>
-                            <div className="text-[11px] text-zinc-500 font-medium">Location</div>
+                            <div className="text-[12px] text-zinc-400 font-medium">Location</div>
                             <div className="font-semibold text-white">{practice.venue}</div>
                         </div>
                     </div>
@@ -276,7 +276,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                 <KeyRound className="h-4 w-4" />
                             </div>
                             <div>
-                                <div className="text-[11px] text-zinc-500 font-medium">Door Code</div>
+                                <div className="text-[12px] text-zinc-400 font-medium">Door Code</div>
                                 <div className="font-mono font-bold text-amber-400 text-base tracking-wider">*{doorCode}*</div>
                             </div>
                         </div>
@@ -360,20 +360,20 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                         </span>
                         <div className="space-y-1.5">
                             {goingList.length === 0 ? (
-                                <p className="text-xs text-zinc-500 italic">No responses yet</p>
+                                <p className="text-xs text-zinc-400 italic">No responses yet</p>
                             ) : (
                                 goingList.map(rsvp => (
                                     <div key={rsvp.id} className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.02] border border-white/5">
                                         <Avatar className="h-7 w-7">
                                             <AvatarImage src={rsvp.user.image || ''} />
-                                            <AvatarFallback className="text-[10px] bg-zinc-800 text-zinc-200">
+                                            <AvatarFallback className="text-[12px] bg-zinc-800 text-zinc-200">
                                                 {rsvp.user.name ? rsvp.user.name.substring(0, 2).toUpperCase() : 'U'}
                                             </AvatarFallback>
                                         </Avatar>
                                         <div className="truncate min-w-0">
                                             <div className="text-xs font-medium text-zinc-200 truncate">{rsvp.user.name || 'Member'}</div>
                                             {rsvp.user.instrument && (
-                                                <div className="text-[10px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
+                                                <div className="text-[12px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
                                             )}
                                         </div>
                                     </div>
@@ -389,20 +389,20 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                         </span>
                         <div className="space-y-1.5">
                             {maybeList.length === 0 ? (
-                                <p className="text-xs text-zinc-500 italic">No responses yet</p>
+                                <p className="text-xs text-zinc-400 italic">No responses yet</p>
                             ) : (
                                 maybeList.map(rsvp => (
                                     <div key={rsvp.id} className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.02] border border-white/5">
                                         <Avatar className="h-7 w-7">
                                             <AvatarImage src={rsvp.user.image || ''} />
-                                            <AvatarFallback className="text-[10px] bg-zinc-800 text-zinc-200">
+                                            <AvatarFallback className="text-[12px] bg-zinc-800 text-zinc-200">
                                                 {rsvp.user.name ? rsvp.user.name.substring(0, 2).toUpperCase() : 'U'}
                                             </AvatarFallback>
                                         </Avatar>
                                         <div className="truncate min-w-0">
                                             <div className="text-xs font-medium text-zinc-200 truncate">{rsvp.user.name || 'Member'}</div>
                                             {rsvp.user.instrument && (
-                                                <div className="text-[10px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
+                                                <div className="text-[12px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
                                             )}
                                         </div>
                                     </div>
@@ -418,20 +418,20 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                         </span>
                         <div className="space-y-1.5">
                             {notGoingList.length === 0 ? (
-                                <p className="text-xs text-zinc-500 italic">No responses yet</p>
+                                <p className="text-xs text-zinc-400 italic">No responses yet</p>
                             ) : (
                                 notGoingList.map(rsvp => (
                                     <div key={rsvp.id} className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.02] border border-white/5">
                                         <Avatar className="h-7 w-7">
                                             <AvatarImage src={rsvp.user.image || ''} />
-                                            <AvatarFallback className="text-[10px] bg-zinc-800 text-zinc-200">
+                                            <AvatarFallback className="text-[12px] bg-zinc-800 text-zinc-200">
                                                 {rsvp.user.name ? rsvp.user.name.substring(0, 2).toUpperCase() : 'U'}
                                             </AvatarFallback>
                                         </Avatar>
                                         <div className="truncate min-w-0">
                                             <div className="text-xs font-medium text-zinc-200 truncate">{rsvp.user.name || 'Member'}</div>
                                             {rsvp.user.instrument && (
-                                                <div className="text-[10px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
+                                                <div className="text-[12px] text-zinc-400 truncate">{rsvp.user.instrument}</div>
                                             )}
                                         </div>
                                     </div>
@@ -455,7 +455,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                 </div>
 
                 {pendingSuggestions.length === 0 ? (
-                    <div className="p-6 text-center rounded-xl border border-dashed border-white/10 text-xs text-zinc-500">
+                    <div className="p-6 text-center rounded-xl border border-dashed border-white/10 text-xs text-zinc-400">
                         No pending suggestions for this practice.
                     </div>
                 ) : (
@@ -484,7 +484,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                         <div className="flex items-center gap-2.5">
                                             <Avatar className="h-6 w-6">
                                                 <AvatarImage src={suggestion.createdBy.image || ''} />
-                                                <AvatarFallback className="text-[10px] bg-zinc-800">
+                                                <AvatarFallback className="text-[12px] bg-zinc-800">
                                                     {suggestion.createdBy.name ? suggestion.createdBy.name.substring(0, 2).toUpperCase() : 'U'}
                                                 </AvatarFallback>
                                             </Avatar>
@@ -493,7 +493,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                             </span>
                                         </div>
 
-                                        <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/30 text-[11px] self-start sm:self-auto">
+                                        <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/30 text-[12px] self-start sm:self-auto">
                                             Voting in Progress
                                         </Badge>
                                     </div>
@@ -502,19 +502,19 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 rounded-lg bg-black/40 border border-white/5 text-xs">
                                         {proposedDateStr && (
                                             <div>
-                                                <span className="text-zinc-500 block text-[10px]">Proposed Date</span>
+                                                <span className="text-zinc-400 block text-[12px]">Proposed Date</span>
                                                 <span className="font-semibold text-blue-400">{proposedDateStr}</span>
                                             </div>
                                         )}
                                         {suggestion.proposedTime && (
                                             <div>
-                                                <span className="text-zinc-500 block text-[10px]">Proposed Time</span>
+                                                <span className="text-zinc-400 block text-[12px]">Proposed Time</span>
                                                 <span className="font-semibold text-blue-400">{suggestion.proposedTime}</span>
                                             </div>
                                         )}
                                         {suggestion.proposedVenue && (
                                             <div>
-                                                <span className="text-zinc-500 block text-[10px]">Proposed Venue</span>
+                                                <span className="text-zinc-400 block text-[12px]">Proposed Venue</span>
                                                 <span className="font-semibold text-blue-400">{suggestion.proposedVenue}</span>
                                             </div>
                                         )}
@@ -563,7 +563,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                                 {yesVotes.map(v => (
                                                     <Avatar key={v.id} className="h-5 w-5 border border-zinc-900" title={`${v.user.name}: Yes`}>
                                                         <AvatarImage src={v.user.image || ''} />
-                                                        <AvatarFallback className="text-[8px] bg-emerald-900 text-emerald-200">
+                                                        <AvatarFallback className="text-[12px] bg-emerald-900 text-emerald-200">
                                                             {v.user.name?.substring(0, 1) || 'Y'}
                                                         </AvatarFallback>
                                                     </Avatar>
@@ -571,7 +571,7 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                                                 {noVotes.map(v => (
                                                     <Avatar key={v.id} className="h-5 w-5 border border-zinc-900" title={`${v.user.name}: No`}>
                                                         <AvatarImage src={v.user.image || ''} />
-                                                        <AvatarFallback className="text-[8px] bg-red-900 text-red-200">
+                                                        <AvatarFallback className="text-[12px] bg-red-900 text-red-200">
                                                             {v.user.name?.substring(0, 1) || 'N'}
                                                         </AvatarFallback>
                                                     </Avatar>
@@ -614,19 +614,19 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                 {/* Resolved suggestions */}
                 {resolvedSuggestions.length > 0 && (
                     <div className="pt-4 border-t border-white/5">
-                        <span className="text-xs font-semibold text-zinc-500 block mb-2">Past Suggestions</span>
+                        <span className="text-xs font-semibold text-zinc-400 block mb-2">Past Suggestions</span>
                         <div className="space-y-2">
                             {resolvedSuggestions.map(s => (
                                 <div key={s.id} className="flex items-center justify-between text-xs p-2.5 rounded-lg bg-white/[0.02] text-zinc-400">
                                     <div className="flex items-center gap-2 truncate">
                                         <span>Suggested by {s.createdBy.name}</span>
-                                        {s.reason && <span className="italic truncate text-zinc-500">"{s.reason}"</span>}
+                                        {s.reason && <span className="italic truncate text-zinc-400">"{s.reason}"</span>}
                                     </div>
                                     <Badge
                                         variant="outline"
                                         className={cn(
-                                            "text-[10px]",
-                                            s.status === 'APPROVED' ? "border-emerald-500/30 text-emerald-400 bg-emerald-500/10" : "border-zinc-700 text-zinc-500"
+                                            "text-[12px]",
+                                            s.status === 'APPROVED' ? "border-emerald-500/30 text-emerald-400 bg-emerald-500/10" : "border-zinc-700 text-zinc-400"
                                         )}
                                     >
                                         {s.status === 'APPROVED' ? 'Applied' : 'Dismissed'}

@@ -37,7 +37,7 @@ export default function AppError({
                     : 'The page hit an unexpected error. You can try again, or go back to the dashboard.'}
             </p>
             {error.digest && (
-                <p className="text-[11px] text-zinc-600 font-mono">ref: {error.digest}</p>
+                <p className="text-[12px] text-zinc-400 font-mono">ref: {error.digest}</p>
             )}
             <div className="flex items-center justify-center gap-2 pt-2">
                 <Button variant="outline" onClick={reset} className="gap-1.5">

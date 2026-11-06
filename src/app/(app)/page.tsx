@@ -112,7 +112,7 @@ export default async function SongsDashboard() {
                 </h2>
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 text-xs sm:text-sm text-zinc-300">
                   <span className="inline-flex items-center gap-1 font-medium text-zinc-200">
-                    <Clock className="h-3.5 w-3.5 text-zinc-500" />
+                    <Clock className="h-3.5 w-3.5 text-zinc-400" />
                     {nextPractice.time}
                   </span>
                   <span>•</span>
@@ -153,7 +153,7 @@ export default async function SongsDashboard() {
                   {goingAttendees.slice(0, 5).map(rsvp => (
                     <Avatar key={rsvp.id} className="h-6 w-6 border-2 border-zinc-950 bg-zinc-800" title={rsvp.user.name || 'Member'}>
                       <AvatarImage src={rsvp.user.image || ''} />
-                      <AvatarFallback className="text-[9px] font-bold text-zinc-300">
+                      <AvatarFallback className="text-[12px] font-bold text-zinc-300">
                         {rsvp.user.name ? rsvp.user.name.substring(0, 2).toUpperCase() : 'U'}
                       </AvatarFallback>
                     </Avatar>

@@ -67,9 +67,9 @@ export function PracticeCard({ practice, isHighlighted = false, currentUserId }:
                                 ? "bg-amber-500/20 border-amber-500/40 text-amber-300"
                                 : "bg-white/5 border-white/10 text-zinc-300"
                     )}>
-                        <span className="text-[10px] uppercase font-bold tracking-wider">{monthName}</span>
+                        <span className="text-[12px] uppercase font-bold tracking-wider">{monthName}</span>
                         <span className="text-2xl font-black leading-none my-0.5">{dayNum}</span>
-                        <span className="text-[10px] font-semibold text-zinc-400">{dayName}</span>
+                        <span className="text-[12px] font-semibold text-zinc-400">{dayName}</span>
                     </div>
 
                     {/* Main Details */}
@@ -103,7 +103,7 @@ export function PracticeCard({ practice, isHighlighted = false, currentUserId }:
 
                         <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-zinc-400">
                             <span className="inline-flex items-center gap-1 font-medium text-zinc-300">
-                                <Clock className="h-3.5 w-3.5 text-zinc-500" />
+                                <Clock className="h-3.5 w-3.5 text-zinc-400" />
                                 {practice.time}
                             </span>
                             <span>•</span>
@@ -150,7 +150,7 @@ export function PracticeCard({ practice, isHighlighted = false, currentUserId }:
                                 return (
                                     <Avatar key={rsvp.id} className="h-7 w-7 border-2 border-zinc-900 bg-zinc-800 ring-1 ring-white/10" title={rsvp.user.name || 'Band member'}>
                                         <AvatarImage src={rsvp.user.image || ''} />
-                                        <AvatarFallback className="text-[10px] font-bold text-zinc-300">{initials}</AvatarFallback>
+                                        <AvatarFallback className="text-[12px] font-bold text-zinc-300">{initials}</AvatarFallback>
                                     </Avatar>
                                 )
                             })}

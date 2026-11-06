@@ -186,7 +186,7 @@ export function ChordDiagram({ chord, className = '' }: ChordDiagramProps) {
           return null
         })}
       </svg>
-      <span className="text-[11px] text-muted-foreground mt-1">
+      <span className="text-[12px] text-muted-foreground mt-1">
         Tuning: E A D G B e
       </span>
     </div>

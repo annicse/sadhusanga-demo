@@ -48,7 +48,7 @@ export function MobileNav({ session }: { session: Session | null }) {
                         >
                             {item.name === 'Profile' && session?.user ? (
                                 <Avatar className={cn("h-6 w-6", isActive && "ring-2 ring-primary ring-offset-2 ring-offset-background")}>
-                                    <AvatarFallback className="text-[10px]">{initials}</AvatarFallback>
+                                    <AvatarFallback className="text-[12px]">{initials}</AvatarFallback>
                                 </Avatar>
                             ) : (
                                 <item.icon className={cn("h-6 w-6", isActive && "fill-primary/20")} strokeWidth={isActive ? 2.5 : 2} />
