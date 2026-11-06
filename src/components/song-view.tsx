@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import {
   Pen,
   Trash2,
@@ -59,6 +59,8 @@ export function SongView({ song: serverSong }: SongViewProps) {
   const [wakeLockActive, setWakeLockActive] = useState(false)
   const [mounted, setMounted] = useState(false)
   const wakeLockRef = useRef<WakeLockSentinel | null>(null)
+  const exitButtonRef = useRef<HTMLButtonElement | null>(null)
+  const returnFocusRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -117,6 +119,18 @@ export function SongView({ song: serverSong }: SongViewProps) {
     }
   }, [isPerformanceMode])
 
+  // Move focus into the performance-mode dialog on open and restore it on close
+  useEffect(() => {
+    if (isPerformanceMode) {
+      returnFocusRef.current = document.activeElement as HTMLElement | null
+      // Wait one frame so the portal content is mounted
+      const id = requestAnimationFrame(() => exitButtonRef.current?.focus())
+      return () => cancelAnimationFrame(id)
+    }
+    returnFocusRef.current?.focus()
+    returnFocusRef.current = null
+  }, [isPerformanceMode])
+
   // ESC key to exit performance mode
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -160,7 +174,12 @@ export function SongView({ song: serverSong }: SongViewProps) {
   // 1. PERFORMANCE MODE (Stage Reader with Screen Wake Lock)
   // =========================================================================
   const performanceModeOverlay = isPerformanceMode && mounted ? createPortal(
-    <div className="fixed inset-0 z-[99999] bg-background text-foreground flex flex-col h-screen w-screen overflow-hidden">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Performance mode: ${song.title}`}
+      className="fixed inset-0 z-[99999] bg-background text-foreground flex flex-col h-screen w-screen overflow-hidden"
+    >
       {/* Sticky Stage Top Bar */}
       <header className="flex items-center justify-between px-4 py-3 border-b bg-card text-card-foreground shrink-0 gap-2 shadow-sm">
         <div className="flex items-center gap-3 overflow-hidden">
@@ -217,6 +236,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
               disabled={fontSizeIndex === 0}
               className="px-2.5 py-1 text-xs font-bold hover:bg-white/10 disabled:opacity-30 rounded-md cursor-pointer transition-colors"
               title="Decrease font size"
+              aria-label="Decrease font size"
             >
               A-
             </button>
@@ -226,6 +246,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
               disabled={fontSizeIndex === FONT_SIZES.length - 1}
               className="px-2.5 py-1 text-xs font-bold hover:bg-white/10 disabled:opacity-30 rounded-md cursor-pointer transition-colors"
               title="Increase font size"
+              aria-label="Increase font size"
             >
               A+
             </button>
@@ -238,6 +259,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
               onClick={() => setSemitones((s) => s - 1)}
               className="px-2.5 py-1 text-xs font-bold hover:bg-white/10 rounded-md font-mono cursor-pointer transition-colors"
               title="Transpose down"
+              aria-label="Transpose down one semitone"
             >
               -1
             </button>
@@ -247,6 +269,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
               disabled={semitones === 0}
               className="px-1.5 py-1 text-xs font-mono text-muted-foreground hover:text-foreground disabled:opacity-30 cursor-pointer"
               title="Reset key"
+              aria-label="Reset key"
             >
               {semitones === 0 ? '0' : semitones > 0 ? `+${semitones}` : semitones}
             </button>
@@ -255,6 +278,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
               onClick={() => setSemitones((s) => s + 1)}
               className="px-2 py-1 text-xs font-bold hover:bg-muted rounded font-mono cursor-pointer"
               title="Transpose up"
+              aria-label="Transpose up one semitone"
             >
               +1
             </button>
@@ -262,8 +286,10 @@ export function SongView({ song: serverSong }: SongViewProps) {
 
           {/* Exit Performance Mode */}
           <Button
+            ref={exitButtonRef}
             variant="default"
             size="sm"
+            aria-label="Exit performance mode"
             onClick={() => setIsPerformanceMode(false)}
             className="gap-1.5 cursor-pointer"
           >
@@ -274,7 +300,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
       </header>
 
       {/* Scrollable Stage Content */}
-      <main className="flex-1 overflow-y-auto p-4 md:p-8 max-w-4xl mx-auto w-full">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 max-w-4xl mx-auto w-full">
         {song.notes && (
           <div className="mb-6 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-200 text-sm flex items-start gap-2">
             <Info className="h-4 w-4 mt-0.5 shrink-0" />
@@ -289,7 +315,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
           semitones={semitones}
           fontSizeClass={FONT_SIZES[fontSizeIndex].class}
         />
-      </main>
+      </div>
     </div>,
     document.body
   ) : null
@@ -304,9 +330,9 @@ export function SongView({ song: serverSong }: SongViewProps) {
         <CardHeader className="space-y-3 pb-4 border-b">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-              <CardTitle className="text-2xl md:text-3xl font-bold tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold leading-snug tracking-tight">
                 {song.title}
-              </CardTitle>
+              </h1>
               {song.artist && (
                 <p className="text-base text-muted-foreground mt-0.5">{song.artist}</p>
               )}
@@ -394,10 +420,11 @@ export function SongView({ song: serverSong }: SongViewProps) {
                 className="h-7 w-7 p-0 font-mono font-bold"
                 onClick={() => setSemitones((s) => s - 1)}
                 title="Transpose down 1 semitone"
+                aria-label="Transpose down one semitone"
               >
                 -1
               </Button>
-              <span className="font-mono text-xs font-bold w-7 text-center">
+              <span aria-live="polite" aria-label="Semitones transposed" className="font-mono text-xs font-bold w-7 text-center">
                 {semitones === 0 ? '0' : semitones > 0 ? `+${semitones}` : semitones}
               </span>
               <Button
@@ -407,6 +434,7 @@ export function SongView({ song: serverSong }: SongViewProps) {
                 className="h-7 w-7 p-0 font-mono font-bold"
                 onClick={() => setSemitones((s) => s + 1)}
                 title="Transpose up 1 semitone"
+                aria-label="Transpose up one semitone"
               >
                 +1
               </Button>
