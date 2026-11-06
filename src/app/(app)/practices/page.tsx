@@ -8,6 +8,8 @@ import { startOfBandToday } from "@/lib/time"
 
 export const dynamic = "force-dynamic"
 
+export const metadata = { title: "Rehearsals" }
+
 export default async function PracticesPage() {
     const session = await auth()
     if (!session?.user) redirect('/login')

@@ -22,6 +22,8 @@ import { SongsList } from "@/components/songs-list"
 
 import { buttonVariants } from "@/components/ui/button-variants"
 
+export const metadata = { title: "Songs" }
+
 export default async function SongsDashboard(props: { searchParams: Promise<{ q?: string }> }) {
   const searchParams = await props.searchParams
   const query = searchParams?.q || ""

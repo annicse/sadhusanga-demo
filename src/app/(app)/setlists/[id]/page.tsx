@@ -3,6 +3,8 @@ import { auth } from "@/auth"
 import { notFound } from "next/navigation"
 import { SetlistBuilder } from "@/components/setlist-builder"
 
+export const metadata = { title: "Setlist" }
+
 export default async function SetlistPage(props: { params: Promise<{ id: string }> }) {
     const params = await props.params
     const id = params.id

@@ -6,6 +6,8 @@ import { doorCodeForVenue } from "@/lib/band-config"
 
 export const dynamic = "force-dynamic"
 
+export const metadata = { title: "Rehearsal" }
+
 export default async function PracticeDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const session = await auth()
     if (!session?.user) redirect('/login')

@@ -27,7 +27,7 @@ export function MobileNav({ session }: { session: Session | null }) {
         : session?.user?.email?.substring(0, 2).toUpperCase() || 'U'
 
     return (
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-black/60 backdrop-blur-xl pb-safe shadow-2xl">
+        <nav aria-label="Mobile" className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-black/60 backdrop-blur-xl pb-safe shadow-2xl">
             <div className="flex h-16 items-center justify-around px-2">
                 {navigation.map((item) => {
                     const isActive = pathname === item.href
@@ -38,6 +38,7 @@ export function MobileNav({ session }: { session: Session | null }) {
                         <Link
                             key={item.href}
                             href={item.href}
+                            aria-current={isActive ? 'page' : undefined}
                             className={cn(
                                 "touch-active flex flex-col items-center justify-center w-full h-full gap-1 text-xs font-medium transition-colors",
                                 isActive

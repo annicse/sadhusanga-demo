@@ -4,6 +4,8 @@ import { AddMemberForm } from "@/components/add-member-form"
 import { notFound, redirect } from "next/navigation"
 import Link from "next/link"
 
+export const metadata = { title: "Add member" }
+
 export default async function AddMemberPage() {
     const session = await auth()
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import { Inter } from "next/font/google"
@@ -13,7 +13,10 @@ const geistMono = {
 };
 
 export const metadata: Metadata = {
-  title: "Sadhusanga",
+  title: {
+    default: "Sadhusanga",
+    template: "%s | Sadhusanga",
+  },
   description: "Band rehearsal and setlist management app.",
   manifest: "/manifest.json",
   appleWebApp: {
@@ -35,6 +38,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+  colorScheme: "dark",
+};
+
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { InstallPrompt } from "@/components/install-prompt";
@@ -53,6 +61,12 @@ export default async function RootLayout({
       <body
         className={`${fontInter.variable} ${geistMono.variable} antialiased text-[1.05rem] font-sans`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -60,7 +74,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {/* Fixed background wallpaper with ambient darkness */}
-          <div className="fixed inset-0 -z-50 pointer-events-none overflow-hidden select-none">
+          <div aria-hidden="true" className="fixed inset-0 -z-50 pointer-events-none overflow-hidden select-none">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: "url('/app-bg.jpg')" }}

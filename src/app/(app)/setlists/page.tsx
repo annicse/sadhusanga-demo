@@ -7,6 +7,8 @@ import { SetlistsList } from "@/components/setlists-list"
 
 import { buttonVariants } from "@/components/ui/button-variants"
 
+export const metadata = { title: "Setlists" }
+
 export default async function SetlistsPage(props: { searchParams: Promise<{ q?: string }> }) {
     const searchParams = await props.searchParams
     const query = searchParams?.q || ""

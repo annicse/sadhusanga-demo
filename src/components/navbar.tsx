@@ -30,10 +30,10 @@ export default async function Navbar() {
             <div className="flex h-14 items-center px-4">
                 <div className="mr-4 flex items-center">
                     <Link href="/" className="mr-6 flex items-center space-x-2.5">
-                        <Image src="/logo.jpg" alt="App Logo" width={32} height={32} className="rounded-lg shadow-sm" />
+                        <Image src="/logo.jpg" alt="" width={32} height={32} className="rounded-lg shadow-sm" />
                         <span className="font-bold sm:inline-block text-lg tracking-tight text-white">Sadhusanga</span>
                     </Link>
-                    <nav className="hidden md:flex items-center space-x-1">
+                    <nav aria-label="Main" className="hidden md:flex items-center space-x-1">
                         <Link
                             href="/"
                             className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"

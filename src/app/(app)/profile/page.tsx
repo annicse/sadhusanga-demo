@@ -6,6 +6,8 @@ import { PushNotificationTester } from "@/components/push-notification-tester"
 import { redirect } from "next/navigation"
 import Link from "next/link"
 
+export const metadata = { title: "Profile" }
+
 export default async function ProfilePage() {
     const session = await auth()
 

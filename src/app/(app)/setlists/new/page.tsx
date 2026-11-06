@@ -1,5 +1,7 @@
 import { SetlistForm } from "@/components/setlist-form"
 
+export const metadata = { title: "Create setlist" }
+
 export default function NewSetlistPage() {
     return (
         <div className="space-y-6 max-w-3xl mx-auto">

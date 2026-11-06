@@ -1,5 +1,7 @@
 import { SongForm } from "@/components/song-form"
 
+export const metadata = { title: "Add song" }
+
 export default function NewSongPage() {
     return (
         <div className="space-y-6">

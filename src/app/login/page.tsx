@@ -5,17 +5,17 @@ import { login } from '@/app/auth/actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card'
 import Link from 'next/link'
 
 export default function LoginPage() {
     const [state, formAction, isPending] = useActionState(login, null)
 
     return (
-        <div className="flex h-screen w-full items-center justify-center px-4">
+        <main id="main-content" tabIndex={-1} className="flex min-h-screen w-full items-center justify-center px-4 focus:outline-none">
             <Card className="w-full max-w-sm">
                 <CardHeader>
-                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <h1 className="text-2xl leading-snug font-medium">Login</h1>
                     <CardDescription>
                         Enter your email below to login to your account.
                     </CardDescription>
@@ -52,6 +52,6 @@ export default function LoginPage() {
                     </CardFooter>
                 </form>
             </Card>
-        </div>
+        </main>
     )
 }

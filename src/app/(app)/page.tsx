@@ -10,6 +10,8 @@ import { bandHour, startOfBandToday } from "@/lib/time"
 
 export const dynamic = "force-dynamic"
 
+export const metadata = { title: "Home" }
+
 export default async function SongsDashboard() {
   const randomGreeting = () => {
     const hour = bandHour()
