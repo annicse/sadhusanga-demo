@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma"
 // exposed to the browser via NEXT_PUBLIC_VAPID_PUBLIC_KEY (see src/lib/vapid.ts).
 const VAPID_PUBLIC_KEY = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
 const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY
-const VAPID_SUBJECT = process.env.VAPID_SUBJECT || "mailto:admin@sadhusanga.com"
+const VAPID_SUBJECT = process.env.VAPID_SUBJECT || "mailto:admin@example.com"
 
 // VAPID setup is deferred to first use rather than done at import time.
 // `next build` evaluates route modules with NODE_ENV=production while

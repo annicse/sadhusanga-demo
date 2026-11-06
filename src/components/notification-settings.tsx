@@ -443,7 +443,7 @@ export function NotificationSettings({ user }: NotificationSettingsProps) {
                                 Morning Rehearsal Alert (9:00 AM)
                             </Label>
                             <p className="text-xs text-zinc-400">
-                                Alerts you at 9:00 AM on practice day with venue, time, and Lydrom door code.
+                                Alerts you at 9:00 AM on practice day with venue, time, and door code.
                             </p>
                         </div>
                         <input

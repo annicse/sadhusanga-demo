@@ -123,7 +123,7 @@ export default async function SongsDashboard() {
                       <span>•</span>
                       <span className="inline-flex items-center gap-1 font-medium text-amber-400">
                         <KeyRound className="h-3.5 w-3.5" />
-                        Lydrom code: <strong className="font-mono text-sm tracking-wider font-bold text-white">*{doorCode}*</strong>
+                        Door code: <strong className="font-mono text-sm tracking-wider font-bold text-white">*{doorCode}*</strong>
                       </span>
                     </>
                   )}
@@ -138,7 +138,7 @@ export default async function SongsDashboard() {
                 {doorCode && (
                   <div className="mt-2 text-xs text-zinc-300 inline-flex items-center gap-1">
                     <KeyRound className="h-3.5 w-3.5 text-amber-400" />
-                    Lydrom code: <strong className="font-mono text-white font-bold">*{doorCode}*</strong>
+                    Door code: <strong className="font-mono text-white font-bold">*{doorCode}*</strong>
                   </div>
                 )}
               </div>

@@ -69,7 +69,7 @@ export default async function PracticesPage() {
                     <div>
                         <h3 className="text-lg font-bold text-white">No Upcoming Practices Scheduled</h3>
                         <p className="text-sm text-zinc-400 mt-1 max-w-sm mx-auto">
-                            Schedule a single rehearsal session or generate repeated practice dates for Thursdays at Kampen.
+                            Schedule a single rehearsal session or generate repeated practice dates for a chosen weekday.
                         </p>
                     </div>
                     <PracticeFormDialog />

@@ -105,7 +105,7 @@ export function SuggestEditDialog({ practice, trigger }: SuggestEditDialogProps)
                             <Input
                                 id="suggest-venue"
                                 type="text"
-                                placeholder="Kampen"
+                                placeholder="Demo Studio"
                                 value={proposedVenue}
                                 onChange={(e) => setProposedVenue(e.target.value)}
                                 className="bg-black/40 border-white/10 text-white"

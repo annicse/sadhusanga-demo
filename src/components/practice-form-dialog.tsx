@@ -30,14 +30,14 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
     const todayStr = new Date().toISOString().split('T')[0]
     const [date, setDate] = useState(todayStr)
     const [time, setTime] = useState("20:00")
-    const [venue, setVenue] = useState("Kampen")
+    const [venue, setVenue] = useState("Demo Studio")
     const [customVenue, setCustomVenue] = useState("")
     const [notes, setNotes] = useState("")
 
     // Recurring form state
     const [dayOfWeek, setDayOfWeek] = useState("4") // 4 = Thursday
     const [recurringTime, setRecurringTime] = useState("20:00")
-    const [recurringVenue, setRecurringVenue] = useState("Kampen")
+    const [recurringVenue, setRecurringVenue] = useState("Demo Studio")
 
     // Default target month = next month
     const nextMonth = new Date()
@@ -52,7 +52,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
         const formData = new FormData()
         formData.append('date', date)
         formData.append('time', time)
-        formData.append('venue', effectiveVenue || "Kampen")
+        formData.append('venue', effectiveVenue || "Demo Studio")
         if (notes) formData.append('notes', notes)
 
         startTransition(async () => {
@@ -169,8 +169,8 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                                     onChange={(e) => setVenue(e.target.value)}
                                     className="w-full h-9 rounded-md border border-white/10 bg-black/60 px-3 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary"
                                 >
-                                    <option value="Kampen">Kampen (Default)</option>
-                                    <option value="Ulsrud skole">Ulsrud skole</option>
+                                    <option value="Demo Studio">Demo Studio (Default)</option>
+                                    <option value="Community Hall">Community Hall</option>
                                     <option value="custom">Other (Free text)</option>
                                 </select>
                             </div>
@@ -193,7 +193,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                             <Label htmlFor="practice-notes" className="text-xs font-medium text-zinc-300">Notes (Optional)</Label>
                             <Textarea
                                 id="practice-notes"
-                                placeholder="E.g. Focus on Mohaloya songs or bring acoustic guitars"
+                                placeholder="E.g. Focus on the new songs or bring acoustic guitars"
                                 value={notes}
                                 onChange={(e) => setNotes(e.target.value)}
                                 className="bg-black/40 border-white/10 text-white text-sm resize-none h-18"
@@ -277,7 +277,7 @@ export function PracticeFormDialog({ trigger }: PracticeFormDialogProps) {
                         </div>
 
                         <p className="text-[11px] text-zinc-400 bg-white/5 p-2.5 rounded-lg border border-white/5">
-                            This will automatically generate weekly rehearsal sessions for all upcoming Thursdays until the end of <strong>{untilMonth}</strong>.
+                            This will automatically generate weekly rehearsal sessions for the selected weekday until the end of <strong>{untilMonth}</strong>.
                         </p>
 
                         <div className="pt-2 flex justify-end gap-2">

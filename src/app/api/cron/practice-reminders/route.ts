@@ -51,7 +51,7 @@ async function handleCron(request: Request) {
         const diffMinutes = (start.getTime() - now.getTime()) / (1000 * 60)
 
         const doorCode = doorCodeForVenue(practice.venue)
-        const doorCodeText = doorCode ? ` Lydrom code: *${doorCode}*.` : ""
+        const doorCodeText = doorCode ? ` Door code: *${doorCode}*.` : ""
 
         // 1. MORNING REMINDER — once per practice, from 08:00 band time
         if (!practice.morningReminderSentAt && bandHour(now) >= MORNING_REMINDER_HOUR) {

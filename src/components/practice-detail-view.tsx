@@ -269,14 +269,14 @@ export function PracticeDetailView({ practice, currentUserId, doorCode }: Practi
                         </div>
                     </div>
 
-                    {/* Rehearsal-room door code (resolved server-side from LYDROM_DOOR_CODE) */}
+                    {/* Rehearsal-room door code (resolved server-side from DOOR_CODE) */}
                     {doorCode && (
                         <div className="flex items-center gap-2">
                             <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-amber-400">
                                 <KeyRound className="h-4 w-4" />
                             </div>
                             <div>
-                                <div className="text-[11px] text-zinc-500 font-medium">Lydrom Code</div>
+                                <div className="text-[11px] text-zinc-500 font-medium">Door Code</div>
                                 <div className="font-mono font-bold text-amber-400 text-base tracking-wider">*{doorCode}*</div>
                             </div>
                         </div>

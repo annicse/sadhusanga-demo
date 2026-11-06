@@ -168,7 +168,7 @@ model Practice {
   id           String     @id @default(cuid())
   date         DateTime
   time         String     @default("20:00") // e.g. "20:00" / "8:00 PM"
-  venue        String     @default("Kampen")
+  venue        String     @default("Demo Studio")
   notes        String?    @db.Text
   isCancelled  Boolean    @default(false)
   cancelReason String?
