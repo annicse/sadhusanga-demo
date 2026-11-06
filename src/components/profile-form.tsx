@@ -48,8 +48,8 @@ export function ProfileForm({ profile }: { profile: any }) {
             </CardHeader>
             <form action={handleSubmit}>
                 <CardContent className="space-y-4">
-                    {error && <div className="text-sm font-medium text-destructive">{error}</div>}
-                    {success && <div className="text-sm font-medium text-green-500 dark:text-green-400">Profile updated successfully!</div>}
+                    {error && <div role="alert" className="text-sm font-medium text-destructive">{error}</div>}
+                    {success && <div role="status" className="text-sm font-medium text-green-500 dark:text-green-400">Profile updated successfully!</div>}
 
                     <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
@@ -59,17 +59,17 @@ export function ProfileForm({ profile }: { profile: any }) {
 
                     <div className="space-y-2">
                         <Label htmlFor="password">New password</Label>
-                        <Input id="password" type='password' name='password' minLength={6} />
+                        <Input id="password" type='password' name='password' autoComplete="new-password" minLength={6} />
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="confirm_password">Confirm password</Label>
-                        <Input id="confirm_password" type='password' name='confirm_password' minLength={6} />
+                        <Input id="confirm_password" type='password' name='confirm_password' autoComplete="new-password" minLength={6} />
                     </div>
 
                     <div className="space-y-2">
                         <Label htmlFor="display_name">Display Name *</Label>
-                        <Input id="display_name" name="display_name" defaultValue={profile.name} required />
+                        <Input id="display_name" name="display_name" autoComplete="name" defaultValue={profile.name} required />
                     </div>
 
                     <div className="space-y-2">
@@ -78,7 +78,7 @@ export function ProfileForm({ profile }: { profile: any }) {
                     </div>
 
                     <div className="space-y-2 pt-2">
-                        <Label>Account Role</Label>
+                        <p className="text-sm leading-none font-medium">Account Role</p>
                         <div>
                             <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20 capitalize">
                                 {profile.role}

@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect, useMemo } from 'react'
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
-import { Plus, GripVertical, Trash2, Save, Printer, MonitorOff, Monitor, ExternalLink, WifiOff } from 'lucide-react'
+import { Plus, GripVertical, Trash2, ArrowUp, ArrowDown, Save, Printer, MonitorOff, Monitor, ExternalLink, WifiOff } from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -158,6 +158,17 @@ export function SetlistBuilder({
         setIsSaving(false)
     }
 
+    // Single-pointer / keyboard alternative to drag-and-drop (WCAG 2.5.7)
+    const moveSong = (index: number, direction: -1 | 1) => {
+        const target = index + direction
+        if (target < 0 || target >= items.length) return
+        const newItems = Array.from(items)
+        const [moved] = newItems.splice(index, 1)
+        newItems.splice(target, 0, moved)
+        setEdits(newItems.map((item, i) => ({ ...item, position: i })))
+        toast.message(`${moved.songs.title} moved to position ${target + 1}`)
+    }
+
     const toggleWakeLock = async () => {
         if ('wakeLock' in navigator) {
             if (wakeLock) {
@@ -219,7 +230,7 @@ export function SetlistBuilder({
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-2 print:hidden">
-                        <Button variant={wakeLock ? "default" : "secondary"} onClick={toggleWakeLock} title="Keep Screen On">
+                        <Button variant={wakeLock ? "default" : "secondary"} onClick={toggleWakeLock} title="Keep Screen On" aria-pressed={!!wakeLock}>
                             {wakeLock ? <Monitor className="w-4 h-4 mr-2" /> : <MonitorOff className="w-4 h-4 mr-2" />}
                             {wakeLock ? "Screen ON" : "Screen Normal"}
                         </Button>
@@ -277,7 +288,7 @@ export function SetlistBuilder({
                                                         className={`group flex items-center gap-3 p-3 bg-black/40 backdrop-blur-md border rounded-xl transition-all print:bg-transparent print:border-none print:rounded-none print:py-2.5 print:px-0 print:border-b print:border-zinc-200 print:shadow-none ${snapshot.isDragging ? 'shadow-2xl ring-2 ring-primary border-transparent bg-black/70' : 'border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
                                                             }`}
                                                     >
-                                                        <div {...provided.dragHandleProps} className="cursor-grab active:cursor-grabbing p-1 hover:bg-muted rounded text-muted-foreground print:hidden">
+                                                        <div {...provided.dragHandleProps} aria-label={`Reorder ${item.songs.title}`} className="cursor-grab active:cursor-grabbing p-1 hover:bg-muted rounded text-muted-foreground print:hidden">
                                                             <GripVertical className="h-5 w-5" />
                                                         </div>
 
@@ -299,14 +310,35 @@ export function SetlistBuilder({
                                                             </div>
                                                         </div>
 
+                                                        <div className="flex items-center print:hidden">
+                                                            <Button
+                                                                variant="ghost"
+                                                                size="icon-sm"
+                                                                aria-label={`Move ${item.songs.title} up`}
+                                                                disabled={index === 0}
+                                                                onClick={() => moveSong(index, -1)}
+                                                            >
+                                                                <ArrowUp className="h-4 w-4" />
+                                                            </Button>
+                                                            <Button
+                                                                variant="ghost"
+                                                                size="icon-sm"
+                                                                aria-label={`Move ${item.songs.title} down`}
+                                                                disabled={index === items.length - 1}
+                                                                onClick={() => moveSong(index, 1)}
+                                                            >
+                                                                <ArrowDown className="h-4 w-4" />
+                                                            </Button>
                                                         <Button
                                                             variant="ghost"
                                                             size="icon"
-                                                            className="opacity-0 group-hover:opacity-100 transition-opacity text-destructive hover:text-destructive hover:bg-destructive/10 print:hidden"
+                                                            aria-label={`Remove ${item.songs.title} from setlist`}
+                                                            className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 pointer-coarse:opacity-100 transition-opacity text-destructive hover:text-destructive hover:bg-destructive/10 print:hidden"
                                                             onClick={() => removeSong(index)}
                                                         >
                                                             <Trash2 className="h-4 w-4" />
                                                         </Button>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -337,7 +369,7 @@ export function SetlistBuilder({
                                                     <div className="font-medium truncate text-zinc-100">{song.title}</div>
                                                     <div className="text-xs text-zinc-400 truncate">{song.artist || '-'}</div>
                                                 </div>
-                                                <Button size="icon-sm" variant="ghost" className="h-8 w-8 shrink-0 hover:bg-white/15 text-zinc-300 hover:text-white" onClick={() => addSong(song)}>
+                                                <Button size="icon-sm" variant="ghost" className="h-8 w-8 shrink-0 hover:bg-white/15 text-zinc-300 hover:text-white" onClick={() => addSong(song)} aria-label={`Add ${song.title} to setlist`}>
                                                     <Plus className="h-4 w-4" />
                                                 </Button>
                                             </div>

@@ -33,17 +33,17 @@ export function AddMemberForm({ profile }: { profile: any }) {
         <Card className="max-w-xl">
             <form action={handleSubmit}>
                 <CardContent className="space-y-4">
-                    {error && <div className="text-sm font-medium text-destructive">{error}</div>}
-                    {success && <div className="text-sm font-medium text-green-500 dark:text-green-400">Member added successfully!</div>}
+                    {error && <div role="alert" className="text-sm font-medium text-destructive">{error}</div>}
+                    {success && <div role="status" className="text-sm font-medium text-green-500 dark:text-green-400">Member added successfully!</div>}
 
                     <div className="space-y-2">
                         <Label htmlFor="email">Email *</Label>
-                        <Input id="email" name="email" type='email' required />
+                        <Input id="email" name="email" type='email' autoComplete="off" required />
                     </div>
 
                     <div className='space-y-2'>
                         <Label htmlFor="password">Password *</Label>
-                        <Input id="password" name="password" type="password" required minLength={6} />
+                        <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={6} />
                     </div>
 
                     <div className="space-y-2 mb-6">

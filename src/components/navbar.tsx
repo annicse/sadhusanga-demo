@@ -62,7 +62,7 @@ export default async function Navbar() {
                     <div className="hidden md:flex items-center ml-2">
                         {user ? (
                             <DropdownMenu>
-                                <DropdownMenuTrigger className="relative h-8 w-8 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 profile-button">
+                                <DropdownMenuTrigger aria-label="Account menu" className="relative h-8 w-8 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 profile-button">
                                     <Avatar className="h-8 w-8">
                                         <AvatarFallback>{initials}</AvatarFallback>
                                     </Avatar>
@@ -90,11 +90,9 @@ export default async function Navbar() {
                                     )}
                                     <DropdownMenuSeparator />
                                     <form action={signout} className="w-full">
-                                        <button type="submit" className="w-full text-left">
-                                            <DropdownMenuItem>
-                                                Log out
-                                            </DropdownMenuItem>
-                                        </button>
+                                        <DropdownMenuItem render={<button type="submit" className="w-full text-left" />}>
+                                            Log out
+                                        </DropdownMenuItem>
                                     </form>
                                 </DropdownMenuContent>
 

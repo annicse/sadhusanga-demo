@@ -38,12 +38,11 @@ export function InstallPrompt() {
         deferredPrompt.prompt()
 
         // Wait for the user to respond to the prompt
-        const { outcome } = await deferredPrompt.userChoice
-        
+        await deferredPrompt.userChoice
+
         // Regardless of outcome, we clear the prompt and hide the UI
         setDeferredPrompt(null)
         setIsVisible(false)
-        console.log(`User ${outcome} the A2HS prompt`)
     }
 
     const handleDismiss = () => {
@@ -53,7 +52,7 @@ export function InstallPrompt() {
     if (!isVisible) return null
 
     return (
-        <div className="md:hidden fixed top-0 left-0 right-0 z-[100] bg-zinc-950/85 text-white backdrop-blur-xl border-b border-white/10 px-4 py-3 shadow-2xl flex items-center justify-between">
+        <div role="region" aria-label="Install app" className="md:hidden fixed top-0 left-0 right-0 z-[100] bg-zinc-950/85 text-white backdrop-blur-xl border-b border-white/10 px-4 py-3 shadow-2xl flex items-center justify-between">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <p className="text-sm font-medium">
                     Install Sadhusanga App for a better experience

@@ -121,9 +121,9 @@ export function SongForm({ song }: SongFormProps) {
             </CardHeader>
             <form action={handleSubmit}>
                 <CardContent className="space-y-4">
-                    {error && <div className="text-sm font-medium text-destructive">{error}</div>}
+                    {error && <div role="alert" className="text-sm font-medium text-destructive">{error}</div>}
                     {successMessage && (
-                        <div className="flex items-center gap-2 p-3 text-sm font-medium text-emerald-800 bg-emerald-50 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-md">
+                        <div role="status" className="flex items-center gap-2 p-3 text-sm font-medium text-emerald-800 bg-emerald-50 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-md">
                             <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                             {successMessage}
                         </div>
@@ -145,7 +145,7 @@ export function SongForm({ song }: SongFormProps) {
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="tempo">Tempo (BPM)</Label>
-                            <Input id="tempo" name="tempo" type="number" defaultValue={song?.tempo || ''} />
+                            <Input id="tempo" name="tempo" type="number" inputMode="numeric" min={1} defaultValue={song?.tempo || ''} />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="songlink">Song link</Label>

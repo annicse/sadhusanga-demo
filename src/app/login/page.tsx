@@ -24,14 +24,14 @@ export default function LoginPage() {
                     <CardContent className="grid gap-4">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
-                            <Input id="email" name="email" type="email" placeholder="m@example.com" required />
+                            <Input id="email" name="email" type="email" autoComplete="email" placeholder="m@example.com" required aria-invalid={state?.error ? true : undefined} aria-describedby={state?.error ? 'login-error' : undefined} />
                         </div>
                         <div className="grid gap-2">
                             <Label htmlFor="password">Password</Label>
-                            <Input id="password" name="password" type="password" required />
+                            <Input id="password" name="password" type="password" autoComplete="current-password" required aria-invalid={state?.error ? true : undefined} aria-describedby={state?.error ? 'login-error' : undefined} />
                         </div>
                         {state?.error && (
-                            <p className="text-sm font-medium text-destructive">
+                            <p id="login-error" role="alert" className="text-sm font-medium text-destructive">
                                 {state.error}
                             </p>
                         )}
