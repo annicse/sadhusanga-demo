@@ -33,10 +33,18 @@ export function ChordDiagram({ chord, className = '' }: ChordDiagramProps) {
   const effectiveBaseFret = baseFret > 1 ? baseFret : 1
   const isNut = effectiveBaseFret === 1
 
+  // Text alternative for the diagram, lowest string (E) first
+  const stringNames = ['low E', 'A', 'D', 'G', 'B', 'high E']
+  const description = frets
+    .map((fret, i) => `${stringNames[i]} ${fret === -1 ? 'muted' : fret === 0 ? 'open' : `fret ${fret}`}`)
+    .join(', ')
+
   return (
     <div className={`flex flex-col items-center p-2 select-none ${className}`}>
       <span className="font-bold text-base text-foreground mb-1">{chord}</span>
       <svg
+        role="img"
+        aria-label={`${chord} guitar chord: ${description}`}
         width={width}
         height={height}
         viewBox={`0 0 ${width} ${height}`}
